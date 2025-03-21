@@ -231,23 +231,29 @@ st.markdown("""
         font-size: 0.9rem !important;
     }
 
-    /* Responsive Design */
+        /* Responsive Design */
     @media (max-width: 768px) {
         .chat-container {
             padding: 1rem 0.5rem;
-        }
-
-        .message-wrapper {
-            margin: 0.75rem auto;
-        }
-
-        .user-message, .bot-message {
-            padding: 0.75rem 1rem;
-            font-size: 0.9rem;
+            margin-bottom: 80px;
         }
 
         .footer-content {
             margin: 0 0.5rem;
+        }
+
+        .stTextArea > div > div > textarea {
+            background: #2D2D3F !important;
+            min-height: 45px !important;
+            max-height: 45px !important;
+            padding: 0.5rem !important;
+        }
+
+        /* Fix for mobile autocomplete background */
+        input:-webkit-autofill,
+        textarea:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 1000px #2D2D3F inset !important;
+            -webkit-text-fill-color: #E2E8F0 !important;
         }
     }
 </style>

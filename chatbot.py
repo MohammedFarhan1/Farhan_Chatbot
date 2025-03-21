@@ -2,9 +2,10 @@
 import os
 import re
 import streamlit as st
+import pytz
 from groq import Groq
 from dotenv import load_dotenv
-import time
+from datetime import datetime
 
 # Load environment variables
 load_dotenv()
@@ -299,6 +300,11 @@ st.markdown("""
         <div class="footer-content">
 """, unsafe_allow_html=True)
 
+def get_current_time():
+    tz = pytz.timezone('Asia/Kolkata')  # Set your timezone here
+    current_time = datetime.now(tz)
+    return current_time.strftime("%I:%M %p")  # Returns time in 12-hour format with AM/PM
+
 def process_input():
     user_input = st.session_state.get("user_input", "")
     if user_input:
@@ -306,7 +312,7 @@ def process_input():
         st.session_state["messages"].append({
             "role": "user",
             "content": user_input,
-            "timestamp": time.strftime("%H:%M")
+            "timestamp": get_current_time()
         })
         
         try:
@@ -327,7 +333,7 @@ def process_input():
             st.session_state["messages"].append({
                 "role": "assistant",
                 "content": bot_response,
-                "timestamp": time.strftime("%H:%M")
+                "timestamp": get_current_time()
             })
             
         except Exception as e:
@@ -335,6 +341,10 @@ def process_input():
         
         finally:
             st.session_state["user_input"] = ""
+
+# Initialize session state for messages if it doesn't exist
+if "messages" not in st.session_state:
+    st.session_state["messages"] = []
 
 # Input form
 with st.form(key="chat_input_form", clear_on_submit=True):

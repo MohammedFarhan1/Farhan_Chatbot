@@ -3,9 +3,11 @@ import os
 import re
 import streamlit as st
 import pytz
+import time
 from groq import Groq
 from dotenv import load_dotenv
 from datetime import datetime
+
 
 # Load environment variables
 load_dotenv()
@@ -15,6 +17,70 @@ client = Groq(
     api_key="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",
     timeout=5.0
 )
+
+# Initialize session state for popup
+if "popup_shown" not in st.session_state:
+    st.session_state["popup_shown"] = False
+
+# Show popup only if not dismissed
+if not st.session_state["popup_shown"]:
+    st.markdown("""
+        <style>
+            /* Centering the popup */
+            .popup-container {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: #1E1E2E;
+                color: white;
+                padding: 20px;
+                border-radius: 12px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                width: 90%;
+                max-width: 400px;
+                text-align: center;
+                z-index: 9999;
+            }
+
+            /* Responsive text sizes */
+            .popup-container h2 {
+                color: #7C3AED;
+                margin-bottom: 10px;
+                font-size: 1.5rem;
+            }
+            .popup-container p {
+                font-size: 1rem;
+                opacity: 0.8;
+            }
+
+            /* Adjustments for small screens */
+            @media (max-width: 480px) {
+                .popup-container {
+                    width: 80%;
+                    max-width: 300px;
+                    padding: 15px;
+                }
+                .popup-container h2 {
+                    font-size: 1.3rem;
+                }
+                .popup-container p {
+                    font-size: 0.9rem;
+                }
+            }
+        </style>
+        <div class="popup-container">
+            <h2>👋 Welcome to Farhan Chatbot!</h2>
+            <p>🚀 Ask me anything, and I'll try my best to assist you.</p>
+            <p>🔹 AI-powered responses | 🔹 Fast & accurate</p>
+        </div>
+    """, unsafe_allow_html=True)
+
+    # Wait 2 seconds, then update session state
+    time.sleep(1)
+    st.session_state["popup_shown"] = True
+    st.rerun()  # Refresh the page to remove popup
+
 
 # Function to clean response
 def clean_response(text):
@@ -27,6 +93,8 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed"
 )
+
+
 
 # Custom CSS with fixed footer-style input and title
 st.markdown("""

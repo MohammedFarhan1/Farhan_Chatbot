@@ -14,7 +14,7 @@ load_dotenv()
 
 # Initialize Groq Client with faster timeout
 client = Groq(
-    api_key="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",
+    api_key="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",
     timeout=5.0
 )
 

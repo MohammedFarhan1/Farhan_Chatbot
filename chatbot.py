@@ -14,7 +14,7 @@ load_dotenv()
 
 # Initialize Groq Client with faster timeout
 client = Groq(
-    api_key="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",
+    api_key="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",
     timeout=5.0
 )
 
@@ -433,3 +433,4 @@ with st.form(key="chat_input_form", clear_on_submit=True):
         )
 
 st.markdown("</div></div>", unsafe_allow_html=True)
+

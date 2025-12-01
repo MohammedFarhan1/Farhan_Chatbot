@@ -70,9 +70,9 @@ if not st.session_state["popup_shown"]:
             }
         </style>
         <div class="popup-container">
-            <h2>👋 Welcome to Farhan Chatbot!</h2>
-            <p>🚀 Ask me anything, and I'll try my best to assist you.</p>
-            <p>🔹 AI-powered responses | 🔹 Fast & accurate</p>
+            <h2>👋 Welcome to AI Assistant Pro!</h2>
+            <p>💼 Professional AI assistance for your business needs.</p>
+            <p>🔹 Expert responses | 🔹 Reliable & efficient</p>
         </div>
     """, unsafe_allow_html=True)
 
@@ -88,8 +88,8 @@ def clean_response(text):
 
 # Page config
 st.set_page_config(
-    page_title="🤖 AI Assistant",
-    page_icon="✨",
+    page_title="AI Assistant Pro",
+    page_icon="💼",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -330,7 +330,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Add title
-st.markdown('<div class="chat-title"><h1>Farhan Chatbot</h1></div>', unsafe_allow_html=True)
+st.markdown('<div class="chat-title"><h1>AI Assistant Pro</h1></div>', unsafe_allow_html=True)
 
 # Initialize session state
 if "messages" not in st.session_state:

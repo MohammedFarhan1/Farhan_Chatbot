@@ -71,8 +71,9 @@ if not st.session_state["popup_shown"]:
         </style>
         <div class="popup-container">
             <h2>👋 Welcome to AI Assistant Pro!</h2>
-            <p>💼 Professional AI assistance for your business needs.</p>
-            <p>🔹 Expert responses | 🔹 Reliable & efficient</p>
+            <p>💼 Professional AI assistance powered by advanced technology.</p>
+            <p>🔹 Built with Streamlit & Groq API | 🔹 LangChain Integration</p>
+            <p>🚀 Llama 3.1 Model | ⚡ Real-time Processing</p>
         </div>
     """, unsafe_allow_html=True)
 

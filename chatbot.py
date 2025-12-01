@@ -386,7 +386,7 @@ def process_input():
         try:
             # Get AI response
             completion = client.chat.completions.create(
-                model="deepseek-r1-distill-llama-70b",
+                model="llama3-8b-8192",
                 messages=[
                     {"role": "system", "content": "You are a helpful AI assistant. Provide concise, accurate responses."},
                     *[{"role": m["role"], "content": m["content"]} for m in st.session_state["messages"][-5:]]

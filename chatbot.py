@@ -386,7 +386,7 @@ def process_input():
         try:
             # Get AI response
             completion = client.chat.completions.create(
-                model="llama3-8b-8192",
+                model="mixtral-8x7b-32768",
                 messages=[
                     {"role": "system", "content": "You are a helpful AI assistant. Provide concise, accurate responses."},
                     *[{"role": m["role"], "content": m["content"]} for m in st.session_state["messages"][-5:]]
